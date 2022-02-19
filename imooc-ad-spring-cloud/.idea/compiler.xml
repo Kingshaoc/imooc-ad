@@ -2,12 +2,14 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ad-eureka" />
         <module name="ad-common" />
+        <module name="ad-sponsor" />
         <module name="ad-apigateway" />
       </profile>
     </annotationProcessing>
@@ -17,6 +19,7 @@
       <module name="ad-apigateway" options="-parameters" />
       <module name="ad-common" options="-parameters" />
       <module name="ad-eureka" options="-parameters" />
+      <module name="ad-sponsor" options="-parameters" />
       <module name="imooc-ad-service" options="-parameters" />
     </option>
   </component>

@@ -4,5 +4,6 @@
     <file url="file://$PROJECT_DIR$/ad-apigateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ad-eureka/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/imooc-ad-service/ad-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/imooc-ad-service/ad-sponsor/src/main/java" charset="UTF-8" />
   </component>
 </project>
