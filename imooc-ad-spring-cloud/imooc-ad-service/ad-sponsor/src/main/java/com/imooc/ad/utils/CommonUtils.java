@@ -6,6 +6,8 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.time.DateUtils;
 
 import java.util.Date;
+import java.util.Map;
+import java.util.function.Supplier;
 
 public class CommonUtils {
 
@@ -24,5 +26,10 @@ public class CommonUtils {
         }catch (Exception e) {
             throw new AdException(e.getMessage());
         }
+    }
+
+    public static <K, V> V getorCreate(K key, Map<K, V> map,
+                                       Supplier<V> factory) {
+        return map.computeIfAbsent(key, k -> factory.get());
     }
 }

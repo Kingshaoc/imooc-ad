@@ -11,6 +11,8 @@
         <module>ad-eureka</module>
         <module>ad-apigateway</module>
         <module>imooc-ad-service</module>
+        <module>ad-search</module>
+        <module>ad-search</module>
     </modules>
 
     <packaging>pom</packaging>
