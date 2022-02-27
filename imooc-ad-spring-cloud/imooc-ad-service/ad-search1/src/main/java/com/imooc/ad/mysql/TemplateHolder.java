@@ -1,4 +1,85 @@
 package com.imooc.ad.mysql;
 
+
+import com.alibaba.fastjson.JSON;
+import com.imooc.ad.mysql.constant.OpType;
+import com.imooc.ad.mysql.dto.ParseTemplate;
+import com.imooc.ad.mysql.dto.TableTemplate;
+import com.imooc.ad.mysql.dto.Template;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.CharSet;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.Charset;
+import java.util.List;
+import java.util.Map;
+
+@Slf4j
+@Component
 public class TemplateHolder {
+
+
+    private ParseTemplate template;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    private String SQL_SCHEMA = "select table_schema, table_name, " +
+            "column_name, ordinal_position from information_schema.columns " +
+            "where table_schema = ? and table_name = ?";
+
+
+    @PostConstruct
+    private void init() {
+         loadJson("template.json");
+    }
+
+    private  void loadJson(String path) {
+        ClassLoader cl = Thread.currentThread().getContextClassLoader();
+        InputStream inputStream = cl.getResourceAsStream(path);
+        try {
+            //读取文件
+            Template template = JSON.parseObject(inputStream, Charset.defaultCharset(), Template.class);
+            //解析成Template对象
+            this.template = ParseTemplate.parse(template);
+            //映射列名
+            loadMeta();
+        }catch (IOException ex) {
+            log.error(ex.getMessage());
+            throw new RuntimeException(ex.getMessage());
+        }
+    }
+
+    /**
+     * 查询每张表的schema信息
+     *  列索引 -> 列名的映射
+     */
+    private void loadMeta() {
+        for (Map.Entry<String , TableTemplate> entry : template.getTableTemplateMap().entrySet()) {
+            TableTemplate table = entry.getValue();
+            List<String> updateFields = table.getOpTypeFieldSetMap().get(OpType.UPDATE);
+            List<String> deleteFields = table.getOpTypeFieldSetMap().get(OpType.DELETE);
+            List<String> insertFields = table.getOpTypeFieldSetMap().get(OpType.ADD);
+            jdbcTemplate.query(SQL_SCHEMA, new Object[] {template.getDatabase(), template.getDatabase()}, (rs, i) -> {
+                int pos = rs.getInt("ORDINAL_POSITION");
+                String colName = rs.getString("COLUMN_NAME");
+
+                if ((updateFields != null && updateFields.contains(colName))
+                        || (deleteFields != null && deleteFields.contains(colName))
+                        || (insertFields != null && insertFields.contains(colName))) {
+                    table.getPosMap().put(pos - 1, colName);
+                }
+                return null;
+            });
+        }
+    }
+
+    public TableTemplate getTable(String tableName) {
+        return template.getTableTemplateMap().get(tableName);
+    }
 }

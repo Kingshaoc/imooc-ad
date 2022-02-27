@@ -4,8 +4,9 @@ import com.imooc.ad.index.IndexAware;
 import com.imooc.ad.index.adplan.AdPlanObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -19,6 +20,32 @@ public class AdUnitIndex implements IndexAware<Long, AdUnitObject> {
 
     static {
         objectMap = new ConcurrentHashMap<>();
+    }
+
+    public Set<Long> match(Integer positionType) {
+        Set<Long> adUnitIds = new HashSet<>();
+        objectMap.forEach((k, v) -> {
+            if (AdUnitObject.isAdSlotTypeOK(positionType, v.getPositonType())) {
+                adUnitIds.add(k);
+            }
+        });
+        return adUnitIds;
+    }
+
+    public List<AdUnitObject> fetch(Collection<Long> adUnitIds) {
+        if (CollectionUtils.isEmpty(adUnitIds)) {
+            return Collections.emptyList();
+        }
+        List<AdUnitObject> result = new ArrayList<>();
+        adUnitIds.forEach(u -> {
+            AdUnitObject adUnitObject = get(u);
+            if (adUnitObject == null) {
+                log.error("adUnitObject not found:{}", u);
+            }else {
+                result.add(adUnitObject);
+            }
+        });
+        return result;
     }
 
     @Override

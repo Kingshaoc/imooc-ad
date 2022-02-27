@@ -8,10 +8,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ad-apigateway" />
-        <module name="ad-eureka" />
         <module name="ad-common" />
+        <module name="ad-eureka" />
         <module name="ad-search1" />
         <module name="ad-sponsor" />
+        <module name="ad-dashboard" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,6 +23,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ad-apigateway" options="-parameters" />
       <module name="ad-common" options="-parameters" />
+      <module name="ad-dashboard" options="-parameters" />
       <module name="ad-eureka" options="-parameters" />
       <module name="ad-search" options="-parameters" />
       <module name="ad-search1" options="-parameters" />

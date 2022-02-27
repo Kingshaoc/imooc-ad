@@ -1,6 +1,6 @@
 package com.imooc.ad.Search.vo;
 
-public enum FeatureRelationEnum {
+public enum FeatureRelation {
 
     OR,
     AND;

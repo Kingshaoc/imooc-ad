@@ -1,4 +1,16 @@
 package com.imooc.ad.Search.vo.feature;
 
-public class KeyWordFeature {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class KeywordFeature {
+
+    private List<String> keywords;
+
 }

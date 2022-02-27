@@ -82,5 +82,7 @@ public class CreativeIndex implements IndexAware<Long, CreativeObject> {
         objectMap.remove(key);
         log.info("after delete: {}", objectMap);
     }
+
+
 }
 

@@ -79,21 +79,18 @@ public class CreativeUnitIndex implements IndexAware<String, CreativeUnitObject>
 
 
     public List<Long> selectAds(List<AdUnitObject> unitObjects) {
-
         if (CollectionUtils.isEmpty(unitObjects)) {
             return Collections.emptyList();
         }
-
         List<Long> result = new ArrayList<>();
-
         for (AdUnitObject unitObject : unitObjects) {
-
             Set<Long> adIds = unitCreativeMap.get(unitObject.getUnitId());
             if (CollectionUtils.isNotEmpty(adIds)) {
                 result.addAll(adIds);
             }
         }
-
         return result;
     }
+
+
 }

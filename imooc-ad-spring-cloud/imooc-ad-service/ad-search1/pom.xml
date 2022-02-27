@@ -87,7 +87,7 @@
             <artifactId>commons-collections4</artifactId>
             <version>4.0</version>
         </dependency>
-        <!-- binlog 监听与解析: https://github.com/shyiko/mysql-binlog-connector-java -->
+
         <dependency>
             <groupId>com.github.shyiko</groupId>
             <artifactId>mysql-binlog-connector-java</artifactId>

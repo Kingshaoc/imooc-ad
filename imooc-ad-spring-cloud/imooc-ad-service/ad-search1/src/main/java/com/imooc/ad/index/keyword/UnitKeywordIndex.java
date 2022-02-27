@@ -4,10 +4,12 @@ package com.imooc.ad.index.keyword;
 import com.imooc.ad.index.IndexAware;
 import com.imooc.ad.utils.CommonUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -25,7 +27,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
  */
 @Slf4j
 @Component
-public class UnitKeyWordIndex implements IndexAware<String, Set<Long>> {
+public class UnitKeywordIndex implements IndexAware<String, Set<Long>> {
 
     private static Map<String, Set<Long>> keyWordUnitMap; // 逆向 keyWord -> unitId
 
@@ -84,5 +86,13 @@ public class UnitKeyWordIndex implements IndexAware<String, Set<Long>> {
             keyWordSet.remove(key);
         }
         log.info("unitkeywordIndex, after remove:{}", unitKeyWordMap);
+    }
+
+    public boolean match(Long unitId, List<String> keywords) {
+        if (unitKeyWordMap.containsKey(unitId) && CollectionUtils.isNotEmpty(unitKeyWordMap.get(unitId))) {
+            Set<String> unitKeywords = unitKeyWordMap.get(unitId);
+            return CollectionUtils.isSubCollection(keywords, unitKeywords);
+        }
+        return false;
     }
 }

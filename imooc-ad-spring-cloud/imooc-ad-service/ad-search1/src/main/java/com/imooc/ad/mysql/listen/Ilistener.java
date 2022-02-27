@@ -1,4 +1,11 @@
 package com.imooc.ad.mysql.listen;
 
-public class Ilistener {
+import com.imooc.ad.mysql.dto.BinLogRowData;
+
+public interface Ilistener {
+
+    void register();
+
+    void onEvent(BinLogRowData eventData);
+
 }
