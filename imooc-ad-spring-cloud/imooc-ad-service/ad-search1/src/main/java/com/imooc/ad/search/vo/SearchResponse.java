@@ -1,4 +1,4 @@
-package com.imooc.ad.Search.vo;
+package com.imooc.ad.search.vo;
 
 
 import com.imooc.ad.index.creative.CreativeObject;

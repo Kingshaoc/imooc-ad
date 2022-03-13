@@ -1,4 +1,4 @@
-package com.imooc.ad.Search.vo;
+package com.imooc.ad.search.vo;
 
 public enum FeatureRelation {
 

@@ -1,13 +1,13 @@
-package com.imooc.ad.Search.vo;
+package com.imooc.ad.search.vo;
 
 
-import com.imooc.ad.Search.vo.feature.DistrictFeature;
-import com.imooc.ad.Search.vo.feature.ItFeature;
-import com.imooc.ad.Search.vo.feature.KeywordFeature;
-import com.imooc.ad.Search.vo.media.AdSlot;
-import com.imooc.ad.Search.vo.media.App;
-import com.imooc.ad.Search.vo.media.Device;
-import com.imooc.ad.Search.vo.media.Geo;
+import com.imooc.ad.search.vo.feature.DistrictFeature;
+import com.imooc.ad.search.vo.feature.ItFeature;
+import com.imooc.ad.search.vo.feature.KeywordFeature;
+import com.imooc.ad.search.vo.media.AdSlot;
+import com.imooc.ad.search.vo.media.App;
+import com.imooc.ad.search.vo.media.Device;
+import com.imooc.ad.search.vo.media.Geo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

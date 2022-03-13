@@ -1,4 +1,4 @@
-package com.imooc.ad.Search.vo.feature;
+package com.imooc.ad.search.vo.feature;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,8 +9,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class KeywordFeature {
+public class ItFeature {
 
-    private List<String> keywords;
+    private List<String> its;
 
 }

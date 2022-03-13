@@ -1,4 +1,4 @@
-package com.imooc.ad.Search.vo.feature;
+package com.imooc.ad.search.vo.feature;
 
 
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package com.imooc.ad.Search.vo.media;
+package com.imooc.ad.search.vo.media;
 
 
 import lombok.AllArgsConstructor;

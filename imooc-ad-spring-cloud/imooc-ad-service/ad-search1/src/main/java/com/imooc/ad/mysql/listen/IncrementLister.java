@@ -47,7 +47,7 @@ public class IncrementLister implements  Ilistener{
         OpType opType = OpType.to(eventType);
         mySqlRowData.setOpType(opType);
 
-        //取除模板中该操作对应的字段列表
+        //去除模板中该操作对应的字段列表
         List<String> fieldList = table.getOpTypeFieldSetMap().get(opType);
         if (fieldList == null) {
             log.warn("{} not support for {}", opType, table.getTableName());

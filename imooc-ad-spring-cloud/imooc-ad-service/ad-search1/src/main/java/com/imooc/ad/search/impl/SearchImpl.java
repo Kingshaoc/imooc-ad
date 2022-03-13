@@ -1,14 +1,14 @@
-package com.imooc.ad.Search.impl;
+package com.imooc.ad.search.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.imooc.ad.Search.ISearch;
-import com.imooc.ad.Search.vo.FeatureRelation;
-import com.imooc.ad.Search.vo.SearchRequest;
-import com.imooc.ad.Search.vo.SearchResponse;
-import com.imooc.ad.Search.vo.feature.DistrictFeature;
-import com.imooc.ad.Search.vo.feature.ItFeature;
-import com.imooc.ad.Search.vo.feature.KeywordFeature;
-import com.imooc.ad.Search.vo.media.AdSlot;
+import com.imooc.ad.search.ISearch;
+import com.imooc.ad.search.vo.FeatureRelation;
+import com.imooc.ad.search.vo.SearchRequest;
+import com.imooc.ad.search.vo.SearchResponse;
+import com.imooc.ad.search.vo.feature.DistrictFeature;
+import com.imooc.ad.search.vo.feature.ItFeature;
+import com.imooc.ad.search.vo.feature.KeywordFeature;
+import com.imooc.ad.search.vo.media.AdSlot;
 import com.imooc.ad.index.CommonStatus;
 import com.imooc.ad.index.DataTable;
 import com.imooc.ad.index.adunit.AdUnitIndex;
